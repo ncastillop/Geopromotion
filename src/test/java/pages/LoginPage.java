@@ -5,24 +5,24 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends Base{
 	
-	private By userLocator = new By.ByXPath("//input[@id='j_username']");
-	private By passLocator = new By.ByXPath("//input[@id='j_password']");
-	private By loginBtnLocator = new By.ByXPath("//input[@id='loginButton']");
-	private By linkCloseSessionLocator = new By.ByXPath("//tbody/tr[4]/td[1]/a[1]");
-	private By imgHomeLocator = new By.ByXPath("//tbody/tr[1]/td[1]/img[1]");
+	private String userLocator = ("//input[@id='j_username']");
+	private String passLocator = ("//input[@id='j_password']");
+	private String loginBtnLocator = ("//input[@id='loginButton']");
+	private String linkCloseSessionLocator = ("//tbody/tr[4]/td[1]/a[1]");
+	private String imgHomeLocator = ("//tbody/tr[1]/td[1]/img[1]");
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
 	
 	}
 	
-	public void signIn() {
+	public void signIn() throws InterruptedException {
 		
-		if(isDisplayed(userLocator)) {
+		if(find(userLocator).isDisplayed()){
 			type("geocom", userLocator);
 			type("geocom", passLocator);
 			click(loginBtnLocator);
-			if(isDisplayed(linkCloseSessionLocator)) {
+			if(find(linkCloseSessionLocator).isDisplayed()) {
 				click(linkCloseSessionLocator);
 				type("geocom", userLocator);
 				type("geocom", passLocator);
@@ -34,7 +34,7 @@ public class LoginPage extends Base{
 			}
 		}
 	
-	public boolean isHomePage(){
+	public boolean isHomePage() throws InterruptedException{
 		return isDisplayed(imgHomeLocator);
 	}	
 

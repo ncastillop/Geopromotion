@@ -18,7 +18,9 @@ public class LoginTest {
 	public void setUp() throws Exception {
 		login = new LoginPage(driver);
 		driver = login.chromeDriverConnection();
+		//System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
 		//login.("http://10.42.76.34:8090/geopromotion-jsf-ui/index.xhtml");
+		//login.chromeDriverConnection();
 		
 		login.navigateTo("http://10.42.76.34:8090/geopromotion-jsf-ui/index.xhtml");
 	}
@@ -29,9 +31,9 @@ public class LoginTest {
 	}
 
 	@Test
-	public void testLogin() {
+	public void testLogin() throws InterruptedException {
 		login.signIn();	
-		assertTrue(login.isHomePage());		
+		assertTrue(login.isHomePage());		 
 	}
 	
 }

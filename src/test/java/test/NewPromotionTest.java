@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +38,11 @@ public class NewPromotionTest {
 		login.signIn();
 		create.goToNewPromotion();
 		
-		assertTrue(create.isCreatePromotionPage());
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		create.createPromotion();
+		
+		//assertTrue(create.isCreatePromotionPage());
 	}
 
 }
